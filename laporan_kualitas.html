@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Laporan Inspeksi Kualitas</title>
+</head>
+<body>
+  <h1>Formulir Laporan Inspeksi Kualitas</h1>
+  <hr>
+  
+  <form>
+    <!-- 1. ID PRODUK -->
+    <label>ID Produk:</label><br>
+    <input type="text" placeholder="Contoh: PRD-001"><br><br>
+    
+    <!-- 2. NAMA INSPEKTUR -->
+    <label>Nama Inspektur:</label><br>
+    <input type="text" placeholder="Nama lengkap"><br><br>
+    
+    <!-- 3. JENIS CACAT (pilih salah satu) -->
+    <label>Jenis Cacat:</label><br>
+    <input type="radio" name="cacat"> Geometri<br>
+    <input type="radio" name="cacat"> Permukaan<br>
+    <input type="radio" name="cacat"> Fungsional<br><br>
+    
+    <!-- 4. JUMLAH CACAT -->
+    <label>Jumlah Cacat:</label><br>
+    <input type="number" min="0" placeholder="Masukkan jumlah"><br><br>
+    
+    <!-- 5. TOMBOL KIRIM -->
+    <button type="submit">Kirim Laporan</button>
+  </form>
+  
+  <br>
+  <a href="index.html">Kembali ke Halaman Utama</a>
+
+</body>
+</html>
