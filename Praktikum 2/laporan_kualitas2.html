@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Laporan Inspeksi Kualitas</title>
+      <link rel="stylesheet" href="stylekuali2.css">
+</head>
+<body>
+  <div id="container">   <!-- SATU container -->
+  
+    <h1>Formulir Laporan Inspeksi Kualitas</h1>
+    <hr>
+    
+    <!-- Form (hanya satu) -->
+    <form>
+      <label>ID Produk:</label><br>
+      <input type="text" placeholder="Contoh: PRD-001"><br><br>
+      
+      <label>Nama Inspektur:</label><br>
+      <input type="text" placeholder="Nama lengkap"><br><br>
+      
+      <label>Jenis Cacat:</label><br>
+      <input type="radio" name="cacat"> Geometri<br>
+      <input type="radio" name="cacat"> Permukaan<br>
+      <input type="radio" name="cacat"> Fungsional<br><br>
+      
+      <label>Jumlah Cacat:</label><br>
+      <input type="number" min="0" placeholder="Masukkan jumlah"><br><br>
+      
+      <button type="submit">Kirim Laporan</button>
+    </form>
+    
+    <!-- Status inspeksi (opsional) di LUAR form -->
+    <p>Status Inspeksi: <span class="status-ok">Sedang Berlangsung</span></p>
+    
+    <br>
+    <a href="index.html">Kembali ke Halaman Utama</a>
+  
+  </div>  <!-- PENUTUP container -->
+</body>
