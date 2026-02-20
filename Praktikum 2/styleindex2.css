@@ -85,14 +85,14 @@ background-color: #219150; /* Hijau lebih gelap saat hover */
 
 /* Class untuk status  (hijau) */
 .status-ok {
-  color: green;           /* Warna tulisan hijau */
-  font-weight: bold;      /* Tulisan tebal */
+  color: green;           
+  font-weight: bold;      
 }
 
 /* Class untuk status down (merah) */
 .status-down {
-  color: red;             /* Warna tulisan merah */
-  font-weight: bold;      /* Tulisan tebal */
+  color: red;             
+  font-weight: bold;      
 }
 
 #container {
