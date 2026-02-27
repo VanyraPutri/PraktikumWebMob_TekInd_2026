@@ -7,35 +7,77 @@
       <link rel="stylesheet" href="stylekuali2.css">
 </head>
 <body>
-  <div id="container">   <!-- SATU container -->
-  
+  <div id="container">  
     <h1>Formulir Laporan Inspeksi Kualitas</h1>
     <hr>
     
-    <!-- Form (hanya satu) -->
     <form>
-      <label>ID Produk:</label><br>
-      <input type="text" placeholder="Contoh: PRD-001"><br><br>
+      <label for="idProduk">ID Produk:</label><br>
+      <input type="text" id="idProduk" name="idProduk" placeholder="Contoh: PRD-001"><br><br>
       
-      <label>Nama Inspektur:</label><br>
-      <input type="text" placeholder="Nama lengkap"><br><br>
+      <label for="inspektur">Nama Inspektur:</label><br>
+      <input type="text" id="inspektur" name="inspektur" placeholder="Nama lengkap"><br><br>
       
       <label>Jenis Cacat:</label><br>
-      <input type="radio" name="cacat"> Geometri<br>
-      <input type="radio" name="cacat"> Permukaan<br>
-      <input type="radio" name="cacat"> Fungsional<br><br>
+      <input type="radio" name="cacat" id="cacatGeometri" value="Geometri">
+      <label for="cacatGeometri">Geometri</label><br>
+          
+      <input type="radio" name="cacat" id="cacatPermukaan" value="Permukaan">
+      <label for="cacatPermukaan">Permukaan</label><br>
+            
+      <input type="radio" name="cacat" id="cacatFungsional" value="Fungsional">
+      <label for="cacatFungsional">Fungsional</label><br><br>
       
-      <label>Jumlah Cacat:</label><br>
-      <input type="number" min="0" placeholder="Masukkan jumlah"><br><br>
+      <label for="JumlahCacat">Jumlah Cacat:</label><br>
+      <input type="number" id="JumlahCacat" name="JumlahCacat" min="0" placeholder="Masukkan jumlah"><br><br>
       
-      <button type="submit">Kirim Laporan</button>
-    </form>
-    
-    <!-- Status inspeksi (opsional) di LUAR form -->
-    <p>Status Inspeksi: <span class="status-ok">Sedang Berlangsung</span></p>
-    
-    <br>
-    <a href="index.html">Kembali ke Halaman Utama</a>
-  
-  </div>  <!-- PENUTUP container -->
-</body>
+      <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <button type="submit" style="width: 50%;">Kirim Laporan</button>
+                <button type="reset" class="reset-button" style="width: 50%;">Reset Form</button>
+            </div>
+        </form>
+        
+        <p>Status Inspeksi: <span class="status-ok">Sedang Berlangsung</span></p>
+        
+        <h2 style="margin-top: 40px;">📊 Data Inspeksi Hari Ini</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Produk</th>
+                    <th>Jenis Cacat</th>
+                    <th>Jumlah</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PRD-001</td>
+                    <td>Geometri</td>
+                    <td>2</td>
+                    <td><span class="status-ok">Selesai</span></td>
+                </tr>
+                <tr>
+                    <td>PRD-002</td>
+                    <td>Permukaan</td>
+                    <td>5</td>
+                    <td><span class="status-ok">Selesai</span></td>
+                </tr>
+                <tr>
+                    <td>PRD-003</td>
+                    <td>Fungsional</td>
+                    <td>1</td>
+                    <td><span class="status-down">Pending</span></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <br>
+        <a href="index.html">← Kembali ke Halaman Utama</a>
+        
+        <hr>
+        <p style="text-align: center; color: #777; font-size: 12px;">
+            © 2026 - Sistem Inspeksi Kualitas Terpadu
+        </p>
+    </div>
+  </body>
+</html>
