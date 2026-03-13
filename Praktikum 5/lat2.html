@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 2 - Array Manipulation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .card {
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .card-header {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px 15px 0 0 !important;
+            padding: 20px;
+            text-align: center;
+        }
+        .result-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+        }
+        .array-item {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 5px 10px;
+            margin: 3px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .array-item.c001 {
+            background: #dc3545;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">📌 Latihan 2: Array Manipulation</h4>
+                <small class="text-white-50">Hitung Kemunculan "C-001"</small>
+            </div>
+            <div class="card-body p-4">
+                
+                <!-- Informasi Array -->
+                <div class="mb-4">
+                    <label class="fw-bold mb-2">Data Array:</label>
+                    <div id="arrayContainer">
+                        <!-- Akan diisi JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Form Tambah Data -->
+                <div class="mb-4">
+                    <label class="fw-bold mb-2">Tambah Data Baru:</label>
+                    <div class="input-group">
+                        <input type="text" id="inputBaru" class="form-control" placeholder="Contoh: C-099">
+                        <button class="btn btn-success" onclick="tambahData()">Tambah</button>
+                    </div>
+                    <small class="text-muted">Ketik kode cacat lalu tambahkan</small>
+                </div>
+                
+                <!-- Tombol Hitung -->
+                <div class="d-grid gap-2 mb-4">
+                    <button class="btn btn-primary" onclick="hitungC001()">
+                        🔍 Hitung Jumlah C-001
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="resetData()">
+                        ⟲ Reset ke Data Awal
+                    </button>
+                </div>
+                
+                <!-- Hasil -->
+                <div class="result-box" id="hasilBox">
+                    <span class="fw-bold">Hasil:</span> <span id="hasilText">Belum dihitung</span>
+                </div>
+                
+                <!-- Console Output -->
+                <div class="mt-4 p-3 bg-dark text-success rounded" style="font-family: monospace; height: 100px; overflow-y: auto;" id="consoleBox">
+                    [Console output akan muncul di sini]
+                </div>
+                
+                <hr>
+                <p class="text-muted small text-center mb-0">
+                    📢 Buka Console (F12) untuk melihat output detail
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="lat2.js"></script>
+</body>
+</html>

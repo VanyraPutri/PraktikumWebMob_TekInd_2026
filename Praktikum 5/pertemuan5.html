@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pertemuan 5 - Function, Array, Object</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>.section-title{border-left:5px solid #0d6efd;padding-left:15px;margin:25px 0 20px}.console-box{background:#1e1e1e;color:#0f0;padding:15px;border-radius:5px;height:150px;overflow-y:auto}</style>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-dark bg-dark"><div class="container-fluid"><span class="navbar-brand">Pertemuan 5</span></div></nav>
+
+    <div class="container mt-4">
+        <!-- Function -->
+        <h5 class="section-title">🔹 Function hitungDaya()</h5>
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col"><label>Tegangan</label><input type="number" id="tegangan" class="form-control" value="220"></div>
+                    <div class="col"><label>Arus</label><input type="number" id="arus" class="form-control" value="10"></div>
+                    <div class="col"><button class="btn btn-primary mt-4 w-100" onclick="hitungDaya()">=</button></div>
+                </div>
+                <div class="alert alert-success mt-3" id="hasilDaya">2200 Watt</div>
+            </div>
+        </div>
+
+        <!-- Array -->
+        <h5 class="section-title">🔹 Array daftarCacat</h5>
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <input type="text" id="cacatBaru" class="form-control" placeholder="Tambah">
+                    <button class="btn btn-success" onclick="tambahCacat()">+</button>
+                    <button class="btn btn-primary" onclick="hitungCacat()">🔍</button>
+                </div>
+                <table class="table table-bordered">
+                    <thead><tr><th>#</th><th>Kode</th><th></th></tr></thead>
+                    <tbody id="tabelCacat"></tbody>
+                </table>
+                <div class="alert alert-info" id="hasilCacat"></div>
+            </div>
+        </div>
+
+        <!-- Object mesinA -->
+        <h5 class="section-title">🔹 Object mesinA</h5>
+        <div class="card mb-4">
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr><th>ID</th><td>M-01</td></tr>
+                    <tr><th>Nama</th><td>Injection Molding 50 Ton</td></tr>
+                    <tr><th>Status</th><td><span class="badge bg-success" id="statusMesin">Running</span></td></tr>
+                    <tr><th>Spesifikasi</th><td>200 mm/s | 150 bar</td></tr>
+                </table>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-success btn-sm" onclick="ubahStatus('Running')">Running</button>
+                    <button class="btn btn-danger btn-sm" onclick="ubahStatus('Breakdown')">Breakdown</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Array of Objects gudangMaterial -->
+        <h5 class="section-title">🔹 gudangMaterial</h5>
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col"><input id="kode" class="form-control" placeholder="Kode"></div>
+                    <div class="col"><input id="nama" class="form-control" placeholder="Nama"></div>
+                    <div class="col"><input id="stok" type="number" class="form-control" placeholder="Stok"></div>
+                    <div class="col"><input id="satuan" class="form-control" placeholder="Satuan"></div>
+                    <div class="col"><button class="btn btn-success w-100" onclick="tambahMaterial()">+</button></div>
+                </div>
+                <table class="table table-bordered">
+                    <thead><tr><th>Kode</th><th>Nama</th><th>Stok</th><th>Satuan</th><th>Status</th><th></th></tr></thead>
+                    <tbody id="tabelGudang"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Console -->
+        <div class="card mb-4">
+            <div class="card-header bg-dark text-white">Console</div>
+            <div class="card-body"><div class="console-box" id="console"></div></div>
+        </div>
+    </div>
+
+    <!-- =========================================== -->
+    <!-- SEMUA SCRIPT ADA DI SINI (GAUSAH FILE JS)  -->
+    <!-- =========================================== -->
+    <script>
+        // Data
+        let cacat = ["C-001", "C-005", "C-012", "C-001", "C-020"];
+        let mesin = { status: "Running" };
+        let gudang = [
+            { kode:"MAT-01", nama:"Baja Ringan", stok:50, satuan:"Batang" },
+            { kode:"MAT-02", nama:"Plastik ABS", stok:120, satuan:"Kg" },
+            { kode:"MAT-03", nama:"Oli Mesin", stok:10, satuan:"Liter" }
+        ];
+
+        // Console
+        let con = document.getElementById('console');
+        let log = console.log;
+        console.log = function(m) { log(m); con.innerHTML += m + '<br>'; };
+
+        // Function
+        window.hitungDaya = () => {
+            let h = (document.getElementById('tegangan').value || 0) * (document.getElementById('arus').value || 0);
+            document.getElementById('hasilDaya').innerHTML = h + ' Watt';
+            console.log('Daya: ' + h);
+        };
+
+        // Array
+        let tc = document.getElementById('tabelCacat');
+        let hc = document.getElementById('hasilCacat');
+        
+        function renderCacat() {
+            tc.innerHTML = cacat.map((c, i) => `<tr><td>${i}</td><td>${c}</td><td><button class="btn btn-sm btn-danger" onclick="hapusCacat(${i})">✖</button></td></tr>`).join('');
+        }
+        
+        window.tambahCacat = () => { let b = document.getElementById('cacatBaru').value; if(b) { cacat.push(b); renderCacat(); console.log('+ ' + b); } };
+        window.hapusCacat = (i) => { let h = cacat.splice(i,1); renderCacat(); console.log('✖ ' + h); };
+        window.hitungCacat = () => {
+            let o = {}; cacat.forEach(c => o[c] = (o[c]||0)+1);
+            hc.innerHTML = Object.entries(o).map(([k,v]) => `${k}:${v}`).join(', ');
+            console.log('Hitung:', o);
+        };
+
+        // Object
+        window.ubahStatus = (s) => { 
+            mesin.status = s; 
+            document.getElementById('statusMesin').innerHTML = `<span class="badge bg-${s=='Running'?'success':'danger'}">${s}</span>`;
+            console.log('Status:', s);
+        };
+
+        // Gudang
+        let tg = document.getElementById('tabelGudang');
+        
+        function renderGudang() {
+            tg.innerHTML = gudang.map((g, i) => `
+                <tr>
+                    <td>${g.kode}</td><td>${g.nama}</td><td>${g.stok}</td><td>${g.satuan}</td>
+                    <td><span class="badge bg-${g.stok<20?'warning text-dark':'success'}">${g.stok<20?'Menipis':'Aman'}</span></td>
+                    <td><button class="btn btn-sm btn-primary" onclick="tambahStok(${i})">+10</button></td>
+                </tr>
+            `).join('');
+        }
+        
+        window.tambahMaterial = () => {
+            let k = document.getElementById('kode').value;
+            let n = document.getElementById('nama').value;
+            let s = parseInt(document.getElementById('stok').value) || 0;
+            let t = document.getElementById('satuan').value;
+            if(k&&n&&t) { gudang.push({kode:k, nama:n, stok:s, satuan:t}); renderGudang(); console.log('+ ' + k); }
+        };
+        
+        window.tambahStok = (i) => { gudang[i].stok += 10; renderGudang(); console.log('Stok +10'); };
+
+        renderCacat(); renderGudang(); window.hitungDaya();
+    </script>
+    
+    <script src="pertemuan5.js"></script>
+</body>
+</html>

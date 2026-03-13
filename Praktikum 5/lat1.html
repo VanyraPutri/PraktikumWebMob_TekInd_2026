@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 1 - Function Lingkaran</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .opsi-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .btn-opsi {
+            flex: 1;
+            padding: 8px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn-opsi.active {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        .btn-hitung {
+            width: 100%;
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .btn-hitung:hover {
+            background: #218838;
+        }
+        .hasil {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .hasil-nilai {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .hasil-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        .console-info {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-left: 4px solid #17a2b8;
+            font-size: 12px;
+            color: #666;
+        }
+        .phi-badge {
+            background: #007bff;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            display: inline-block;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            Kalkulator Lingkaran
+            <span class="phi-badge">π = 3.14</span>
+        </h1>
+        
+        <!-- Input jari-jari -->
+        <div class="input-group">
+            <label>Jari-jari (cm):</label>
+            <input type="number" id="jariJari" value="10" min="0.1" step="0.1">
+        </div>
+        
+        <!-- Opsi perhitungan -->
+        <div class="opsi-group">
+            <div class="btn-opsi active" id="opsiSemua" onclick="pilihOpsi('semua')">Semua</div>
+            <div class="btn-opsi" id="opsiLuas" onclick="pilihOpsi('luas')">Luas</div>
+            <div class="btn-opsi" id="opsiKeliling" onclick="pilihOpsi('keliling')">Keliling</div>
+        </div>
+        
+        <!-- Tombol hitung -->
+        <button class="btn-hitung" onclick="hitung()">Hitung</button>
+        
+        <!-- Hasil -->
+        <div class="hasil" id="hasilBox">
+            <div id="hasilSemua">
+                <div style="display: flex; justify-content: space-around;">
+                    <div>
+                        <div class="hasil-nilai" id="luasValue">314</div>
+                        <div class="hasil-label">Luas (cm²)</div>
+                    </div>
+                    <div>
+                        <div class="hasil-nilai" id="kelilingValue">62.8</div>
+                        <div class="hasil-label">Keliling (cm)</div>
+                    </div>
+                </div>
+            </div>
+            <div id="hasilLuas" style="display: none;">
+                <div class="hasil-nilai" id="luasSaja">314</div>
+                <div class="hasil-label">Luas (cm²)</div>
+            </div>
+            <div id="hasilKeliling" style="display: none;">
+                <div class="hasil-nilai" id="kelilingSaja">62.8</div>
+                <div class="hasil-label">Keliling (cm)</div>
+            </div>
+        </div>
+        
+        <!-- Info console -->
+        <div class="console-info">
+            📢 Buka Console (F12) untuk melihat output function sesuai modul
+        </div>
+    </div>
+    
+    <script src="lat1.js"></script>
+</body>
+</html>
