@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Audit 5S - Teknik Industri</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card-audit {
+            transition: transform 0.2s;
+        }
+        .card-audit:hover {
+            transform: translateY(-5px);
+        }
+        .skor-badge {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container mt-4 mb-5">
+        <!-- Header -->
+        <div class="text-center mb-4">
+            <h1 class="display-5 fw-bold text-primary">📋 Form Audit 5S</h1>
+            <p class="text-muted">Seiri · Seiton · Seiso · Seiketsu · Shitsuke</p>
+            <hr>
+        </div>
+
+        <div class="row">
+            <!-- Kolom KIRI: Form Input Audit -->
+            <div class="col-md-5">
+                <div class="card card-audit shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">📝 Input Data Audit</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="formAudit">
+                            <!-- Nama Auditor -->
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">👤 Nama Auditor</label>
+                                <input type="text" id="auditor" class="form-control" placeholder="Contoh: Bapak Budi" required>
+                            </div>
+                            
+                            <!-- Area/Lini Produksi -->
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">🏭 Area/Lini Produksi</label>
+                                <input type="text" id="area" class="form-control" placeholder="Contoh: Lini A, Gudang, Assembly" required>
+                            </div>
+                            
+                            <!-- Checklist 5S -->
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">✅ Checklist 5S</label>
+                                
+                                <div class="border rounded p-3 bg-light">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="seiri" value="Seiri">
+                                        <label class="form-check-label fw-semibold" for="seiri">
+                                            🗑️ <span class="text-primary">Seiri</span> (Ringkas) - Buang barang tidak perlu
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="seiton" value="Seiton">
+                                        <label class="form-check-label fw-semibold" for="seiton">
+                                            📦 <span class="text-primary">Seiton</span> (Rapi) - Tata barang sesuai posisi
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="seiso" value="Seiso">
+                                        <label class="form-check-label fw-semibold" for="seiso">
+                                            🧹 <span class="text-primary">Seiso</span> (Resik) - Bersihkan area kerja
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="seiketsu" value="Seiketsu">
+                                        <label class="form-check-label fw-semibold" for="seiketsu">
+                                            📋 <span class="text-primary">Seiketsu</span> (Rawat) - Standarisasi pembersihan
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="shitsuke" value="Shitsuke">
+                                        <label class="form-check-label fw-semibold" for="shitsuke">
+                                            🔄 <span class="text-primary">Shitsuke</span> (Rajin) - Disiplin menjalankan prosedur
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Preview Skor (akan muncul otomatis) -->
+                            <div id="previewSkor" class="alert alert-info mt-3">
+                                📊 Skor Sementara: <strong>0%</strong> (0/5 checklist terpenuhi)
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary w-100 py-2">
+                                💾 Simpan Hasil Audit
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Kolom KANAN: Riwayat Audit -->
+            <div class="col-md-7">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">📜 Riwayat Audit 5S</h5>
+                        <span id="totalAudit" class="badge bg-light text-dark">0 data</span>
+                    </div>
+                    <div class="card-body" style="max-height: 500px; overflow-y: auto;">
+                        <table class="table table-bordered table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Auditor</th>
+                                    <th>Area</th>
+                                    <th>Skor</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelRiwayat">
+                                <tr>
+                                    <td colspan="6" class="text-center text-muted">Belum ada data audit</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <button id="hapusSemuaAudit" class="btn btn-danger w-100">
+                            🗑️ Hapus Semua Riwayat
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="TM5s.js"></script>
+</body>
+</html>
