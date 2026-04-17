@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Insiden - Maintenance</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+    
+    <h2 class="mb-4">🚨 Laporan Insiden Pabrik (10 Terbaru)</h2>
+    
+    <div class="mb-3">
+        <button id="btnLoadInsiden" class="btn btn-danger">📋 Muat Laporan Insiden</button>
+        <div id="loadingInsiden" class="spinner-border text-danger d-none" role="status"></div>
+    </div>
+    
+    <div class="row" id="containerInsiden">
+        <!-- Card insiden akan muncul di sini -->
+    </div>
+    
+    <script src="insidenTM_script.js"></script>
+</body>
+</html>
